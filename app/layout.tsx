@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: '珀瑞缇PRT - 人工智能时代的高质量数据引领者',
+  title: '珀瑞缇 - 人工智能时代的高质量数据引领者',
   description: '专注于为人工智能产业链提供高质量数据服务，助力AI技术创新与产业智能化升级',
 }
 

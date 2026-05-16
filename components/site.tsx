@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
 import {
   IconCollect, IconLabel, IconProcess, IconAnalysis, IconSynth, IconPlatform,
@@ -16,7 +16,28 @@ import {
 
 import PRTLOGO from "@/public/PRT_logo.svg"
 
-const NAV = ["首页", "关于我们", "数据服务", "解决方案", "成功案例", "新闻资讯", "加入我们", "联系我们"]
+const NAV = [
+  {
+    title: "数据产品",
+    items: ["大模型数据集", "真实物理世界数据集", "真机数据"]
+  },
+  {
+    title: "解决方案",
+    items: ["定制化数据生产", "Agent部署", "具身设备二次开发"]
+  },
+  {
+    title: "测评研究",
+    items: ["大模型能力测评"]
+  },
+  {
+    title: "资源能力",
+    items: ["大模型专家资源", "标注基地资源", "具身工程师资源"]
+  },
+  {
+    title: "联系我们",
+    items: []
+  },
+]
 
 const SERVICES = [
   { icon: <IconCollect size={64} />, title: "数据采集", desc: "全渠道数据采集方案\n覆盖全球多种场景" },
@@ -40,10 +61,8 @@ const ADV_RIGHT = [
 
 const SCENARIOS = [
   { bg: <ScenarioDriving />, icon: <IconCar size={28} />, title: "自动驾驶", desc: "提供高质量的道路场景数据，目标识别与障碍数据等" },
-  { bg: <ScenarioCity />, icon: <IconCity size={28} />, title: "智慧城市", desc: "提供城市基础设施、交通流量、公共安全等数据支持" },
-  { bg: <ScenarioManufacture />, icon: <IconRobot size={28} />, title: "智能制造", desc: "提供工业视觉、设备状态、生产流程等数据服务" },
+  { bg: <ScenarioManufacture />, icon: <IconRobot size={28} />, title: "具身智能", desc: "基于具身机器人基础架构开展深度定制化研发，适配多场景，完成部署地" },
   { bg: <ScenarioAI />, icon: <IconAI size={28} />, title: "互联网与AI应用", desc: "提供图像、语音、文本等多模态数据，支持AI模型训练" },
-  { bg: <ScenarioHealth />, icon: <IconHealth size={28} />, title: "医疗健康", desc: "提供医疗影像、病历文本等数据，助力AI医疗发展" },
 ]
 
 const PARTNER_LOGOS: string[] = [
@@ -53,7 +72,29 @@ const PARTNER_LOGOS: string[] = [
 ]
 
 function Header() {
-  const [active, setActive] = useState("首页")
+  const [expandedNav, setExpandedNav] = useState<string | null>(null)
+  const [language, setLanguage] = useState<"zh" | "en">("zh")
+  const [langMenuOpen, setLangMenuOpen] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const handleMouseEnter = (title: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+    setExpandedNav(title)
+  }
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setExpandedNav(null)
+    }, 150)
+  }
+
+  const handleLangClick = () => {
+    setLangMenuOpen(!langMenuOpen)
+  }
+
   return (
     <header className="header">
       <div className="container">
@@ -63,10 +104,56 @@ function Header() {
         </a>
         <nav className="nav">
           {NAV.map((n) => (
-            <a key={n} href="#" className={active === n ? "active" : ""} onClick={(e) => { e.preventDefault(); setActive(n) }}>
-              {n}
-            </a>
+            <div
+              key={n.title}
+              className="nav-item-wrapper"
+              onMouseEnter={() => handleMouseEnter(n.title)}
+              onMouseLeave={() => handleMouseLeave()}
+            >
+              <button className="nav-item">
+                {n.title}
+                {n.items.length > 0 && <span className="nav-chevron"><IconChevron size={12} /></span>}
+              </button>
+              {n.items.length > 0 && expandedNav === n.title && (
+                <div className="nav-dropdown">
+                  {n.items.map((item) => (
+                    <a key={item} href="#" onClick={(e) => e.preventDefault()}>
+                      {item}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
+          <div className="lang-selector">
+            <button className="lang-button" onClick={handleLangClick}>
+              <svg viewBox="0 0 1024 1024" width="18" height="18" fill="currentColor">
+                <path d="M512 0c282.773333 0 512 229.226667 512 512S794.773333 1024 512 1024 0 794.773333 0 512 229.226667 0 512 0z m169.749333 554.666667H342.250667c9.429333 217.792 89.813333 384 169.749333 384 79.914667 0 160.32-166.208 169.749333-384z m-424.917333 0l-169.386667 0.021333c15.658667 157.568 117.034667 289.92 256.853334 349.76-50.282667-85.738667-82.069333-210.346667-87.466667-349.76z m679.722667 0.021333h-169.386667c-5.397333 139.434667-37.184 264.021333-87.466667 349.738667 139.818667-59.797333 241.194667-192.170667 256.853334-349.738667zM344.32 119.573333l-4.736 2.048C202.176 182.378667 102.912 313.536 87.466667 469.333333h169.386666c5.397333-139.434667 37.184-264.042667 87.466667-349.76zM512 85.333333l-3.2 0.085334c-78.848 4.352-157.226667 169.045333-166.549333 383.914666h339.498666C672.32 251.562667 591.936 85.333333 512 85.333333z m167.701333 34.218667l3.136 5.44C731.306667 210.496 761.877333 332.8 767.146667 469.333333h169.386666c-15.637333-157.589333-117.034667-289.941333-256.853333-349.781333z" />
+              </svg>
+            </button>
+            {langMenuOpen && (
+              <div className="lang-dropdown">
+                <button
+                  onClick={() => {
+                    setLanguage("zh")
+                    setLangMenuOpen(false)
+                  }}
+                  className={language === "zh" ? "active" : ""}
+                >
+                  简体中文
+                </button>
+                <button
+                  onClick={() => {
+                    setLanguage("en")
+                    setLangMenuOpen(false)
+                  }}
+                  className={language === "en" ? "active" : ""}
+                >
+                  English
+                </button>
+              </div>
+            )}
+          </div>
         </nav>
       </div>
     </header>
@@ -251,10 +338,8 @@ function Footer() {
             <h5>解决方案</h5>
             <ul>
               <li><a href="#">自动驾驶</a></li>
-              <li><a href="#">智慧城市</a></li>
-              <li><a href="#">智能制造</a></li>
+              <li><a href="#">具身智能</a></li>
               <li><a href="#">互联网与AI应用</a></li>
-              <li><a href="#">医疗健康</a></li>
             </ul>
           </div>
           <div>
@@ -263,7 +348,6 @@ function Footer() {
               <li><a href="#">公司介绍</a></li>
               <li><a href="#">核心优势</a></li>
               <li><a href="#">新闻资讯</a></li>
-              <li><a href="#">加入我们</a></li>
               <li><a href="#">联系我们</a></li>
             </ul>
           </div>
@@ -359,7 +443,6 @@ export default function Site() {
       <Services />
       <Advantages />
       <Scenarios />
-      <Partners />
       <Footer />
       {showTop && (
         <button className="scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>

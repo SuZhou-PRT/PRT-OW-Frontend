@@ -2,7 +2,7 @@ import Image from "next/image"
 import type { StaticImageData } from "next/image"
 import ScenarioDrivingIMG from "@/public/scenarios/ScenarioDriving-IMG.png"
 import ScenarioCityIMG from "@/public/scenarios/ScenarioCity-IMG.png"
-import ScenarioManufactureIMG from "@/public/scenarios/ScenarioManufacture-IMG.png"
+import ScenarioManufactureIMG from "@/public/scenarios/Jushen.jpg"
 import ScenarioAIIMG from "@/public/scenarios/ScenarioAI-IMG.png"
 import ScenarioHealthIMG from "@/public/scenarios/ScenarioHealth-IMG.png"
 
