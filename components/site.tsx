@@ -209,7 +209,6 @@ function Services() {
               <div className="icon">{s.icon}</div>
               <h3>{s.title}</h3>
               <p>{s.desc.split("\n").map((l, k) => <span key={k}>{l}<br /></span>)}</p>
-              <a className="more" href="#">了解更多 <IconArrowRight size={10} /></a>
             </div>
           ))}
         </div>
