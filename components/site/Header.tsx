@@ -4,11 +4,12 @@ import { useRef, useState } from "react"
 import Image from "next/image"
 import PRTLOGO from "@/public/PRT_logo.svg"
 import { IconChevron } from "@/components/icons"
-import { NAV } from "./data"
+import { useLang } from "./use-lang"
 import { LangSelector } from "./LangSelector"
 import { ThemeToggle } from "./ThemeToggle"
 
 export function Header() {
+  const { t } = useLang()
   const [expandedNav, setExpandedNav] = useState<string | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -28,10 +29,10 @@ export function Header() {
       <div className="container">
         <a className="brand" href="#">
           <Image src={PRTLOGO} alt="PRT" width={120} height={42} priority />
-          <span className="brand-sub">苏州珀瑞缇信息科技有限公司</span>
+          <span className="brand-sub">{t.brandSub}</span>
         </a>
         <nav className="nav">
-          {NAV.map((n) => (
+          {t.nav.map((n) => (
             <div
               key={n.title}
               className="nav-item-wrapper"

@@ -2,16 +2,18 @@
 
 import { IconArrowRight } from "@/components/icons"
 import { Globe } from "@/components/visuals"
+import { useLang } from "./use-lang"
 
 export function Hero() {
+  const { t } = useLang()
   return (
     <section className="hero">
       <div className="container">
         <div className="hero-copy">
-          <h1>AI驱动数据价值<br />赋能智能未来</h1>
-          <p className="lede">珀瑞缇PRT，一家专注于高质量数据采集、处理与标注的<br />人工智能数据公司</p>
+          <h1>{t.hero.titleA}<br />{t.hero.titleB}</h1>
+          <p className="lede">{t.hero.ledeA}<br />{t.hero.ledeB}</p>
           <button className="btn-primary">
-            探索数据服务 <IconArrowRight size={14} />
+            {t.hero.cta} <IconArrowRight size={14} />
           </button>
         </div>
         <div className="hero-visual">

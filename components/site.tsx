@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { IconUp } from "@/components/icons"
 import { ThemeProvider } from "./site/use-theme"
+import { LangProvider } from "./site/use-lang"
 import { useSmoothScroll } from "./site/use-smooth-scroll"
 import { Header } from "./site/Header"
 import { Hero } from "./site/Hero"
@@ -30,13 +31,15 @@ export default function Site() {
   useSmoothScroll()
   return (
     <ThemeProvider>
-      <Header />
-      <Hero />
-      <Services />
-      <Advantages />
-      <Scenarios />
-      <Footer />
-      <ScrollTopButton />
+      <LangProvider>
+        <Header />
+        <Hero />
+        <Services />
+        <Advantages />
+        <Scenarios />
+        <Footer />
+        <ScrollTopButton />
+      </LangProvider>
     </ThemeProvider>
   )
 }

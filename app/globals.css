@@ -28,6 +28,14 @@
   --advantages-bg: linear-gradient(180deg, var(--bg) 0%, #060e22 100%);
   --footer-bg: #030717;
   --strong-text: #c5cde0;
+  --brand-shadow: rgba(45, 108, 255, 0.35);
+  --brand-shadow-strong: rgba(45, 108, 255, 0.5);
+  --brand-radial: rgba(74, 142, 255, 0.15);
+  --brand-soft-a: rgba(45, 108, 255, 0.25);
+  --brand-soft-b: rgba(74, 142, 255, 0.1);
+  --brand-soft-border: rgba(74, 142, 255, 0.3);
+  --scroll-top-bg: rgba(45, 108, 255, 0.2);
+  --scroll-top-bg-hover: rgba(45, 108, 255, 0.4);
 }
 
 [data-theme="light"] {
@@ -36,12 +44,16 @@
   --bg-2: #ece5d2;
   --bg-card: #ffffff;
   --bg-card-2: #faf6ea;
-  --border: rgba(45, 108, 255, 0.22);
-  --border-strong: rgba(45, 108, 255, 0.4);
+  --border: rgba(11, 19, 48, 0.18);
+  --border-strong: rgba(11, 19, 48, 0.4);
   --text: #0b1330;
   --text-dim: #4b5775;
   --text-muted: #7a849f;
-  --glow: rgba(45, 108, 255, 0.25);
+  --brand: #0b1330;
+  --brand-2: #0b1330;
+  --brand-3: #2b3556;
+  --gradient-blue: linear-gradient(135deg, #0b1330 0%, #2b3556 100%);
+  --glow: rgba(11, 19, 48, 0.2);
   --header-bg: rgba(246, 242, 231, 0.82);
   --dropdown-bg: rgba(255, 253, 247, 0.98);
   --hero-image: url("/assets/hero-globe-white.png");
@@ -49,12 +61,20 @@
   --hero-fade: linear-gradient(180deg, transparent 70%, var(--bg) 100%);
   --hover-bg: rgba(11, 19, 48, 0.06);
   --track-dim: rgba(11, 19, 48, 0.15);
-  --num-gradient: linear-gradient(180deg, #1b2752 0%, #2d6cff 100%);
+  --num-gradient: linear-gradient(180deg, #0b1330 0%, #4b5775 100%);
   --card-bg: linear-gradient(180deg, #ffffff 0%, #f1ecdd 100%);
   --card-bg-hover: linear-gradient(180deg, #ffffff 0%, #e6e0ce 100%);
   --advantages-bg: linear-gradient(180deg, var(--bg) 0%, #ece5d2 100%);
   --footer-bg: #ede5d0;
   --strong-text: #1b2752;
+  --brand-shadow: rgba(11, 19, 48, 0.25);
+  --brand-shadow-strong: rgba(11, 19, 48, 0.4);
+  --brand-radial: rgba(11, 19, 48, 0.08);
+  --brand-soft-a: rgba(11, 19, 48, 0.12);
+  --brand-soft-b: rgba(11, 19, 48, 0.04);
+  --brand-soft-border: rgba(11, 19, 48, 0.3);
+  --scroll-top-bg: rgba(11, 19, 48, 0.12);
+  --scroll-top-bg-hover: rgba(11, 19, 48, 0.25);
 }
 
 html, body, .header, .hero, .footer, .scroll-top {
@@ -151,7 +171,7 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.5px;
-  box-shadow: 0 6px 22px rgba(45, 108, 255, 0.35);
+  box-shadow: 0 6px 22px var(--brand-shadow);
 }
 .brand .name {
   font-size: 15px;
@@ -387,10 +407,10 @@ img, svg { display: block; max-width: 100%; }
   font-size: 15px;
   font-weight: 500;
   color: #fff;
-  box-shadow: 0 10px 30px rgba(45, 108, 255, 0.35);
+  box-shadow: 0 10px 30px var(--brand-shadow);
   transition: transform .2s, box-shadow .2s;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(45, 108, 255, 0.5); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px var(--brand-shadow-strong); }
 .btn-primary svg { width: 16px; height: 16px; }
 
 .hero-visual {
@@ -485,7 +505,7 @@ img, svg { display: block; max-width: 100%; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at top, rgba(74, 142, 255, 0.15), transparent 60%);
+  background: radial-gradient(ellipse at top, var(--brand-radial), transparent 60%);
   opacity: 0;
   transition: opacity .3s;
   pointer-events: none;
@@ -557,8 +577,8 @@ img, svg { display: block; max-width: 100%; }
   flex-shrink: 0;
   width: 50px; height: 50px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(45, 108, 255, 0.25), rgba(74, 142, 255, 0.1));
-  border: 1px solid rgba(74, 142, 255, 0.3);
+  background: linear-gradient(135deg, var(--brand-soft-a), var(--brand-soft-b));
+  border: 1px solid var(--brand-soft-border);
   display: grid;
   place-items: center;
   color: var(--brand-3);
@@ -762,7 +782,7 @@ img, svg { display: block; max-width: 100%; }
   right: 28px; bottom: 28px;
   width: 40px; height: 40px;
   border-radius: 6px;
-  background: rgba(45, 108, 255, 0.2);
+  background: var(--scroll-top-bg);
   border: 1px solid var(--border-strong);
   color: var(--brand-2);
   display: grid;
@@ -771,7 +791,7 @@ img, svg { display: block; max-width: 100%; }
   z-index: 50;
   transition: all .2s;
 }
-.scroll-top:hover { background: rgba(45, 108, 255, 0.4); }
+.scroll-top:hover { background: var(--scroll-top-bg-hover); }
 
 /* ========== Responsive ========== */
 

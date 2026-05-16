@@ -1,17 +1,15 @@
 "use client"
 
 import { useTheme } from "./use-theme"
+import { useLang } from "./use-lang"
 
 export function ThemeToggle() {
   const { theme, toggle } = useTheme()
+  const { t } = useLang()
   const isLight = theme === "light"
+  const label = isLight ? t.themeToggle.toDark : t.themeToggle.toLight
   return (
-    <button
-      className="theme-toggle"
-      onClick={toggle}
-      aria-label={isLight ? "切换到深色模式" : "切换到浅色模式"}
-      title={isLight ? "切换到深色模式" : "切换到浅色模式"}
-    >
+    <button className="theme-toggle" onClick={toggle} aria-label={label} title={label}>
       {isLight ? (
         <svg viewBox="0 0 1024 1024" width="18" height="18" fill="currentColor" aria-hidden>
           <path d="M439 224a289 289 0 0 0-89 39c-28 18-51 40-71 65a288 288 0 0 0-46 85 290 290 0 0 0-17 99 290 290 0 0 0 23 115 295 295 0 0 0 63 95 295 295 0 0 0 95 63 290 290 0 0 0 115 23c34 0 67-6 99-17 32-11 60-27 85-47 25-20 46-43 64-71a290 290 0 0 0 40-89c-8 1-18 1-28 1-45 0-88-9-129-26a290 290 0 0 1-107-72 290 290 0 0 1-71-107 290 290 0 0 1-26-129c0-10 0-19 1-28z" />
