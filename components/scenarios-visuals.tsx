@@ -22,5 +22,5 @@ function ScenarioImage({ src, alt }: { src: StaticImageData; alt: string }) {
 export const ScenarioDriving = () => <ScenarioImage src={ScenarioDrivingIMG} alt="自动驾驶" />
 export const ScenarioCity = () => <ScenarioImage src={ScenarioCityIMG} alt="智慧城市" />
 export const ScenarioManufacture = () => <ScenarioImage src={ScenarioManufactureIMG} alt="智能制造" />
-export const ScenarioAI = () => <ScenarioImage src={ScenarioAIIMG} alt="互联网与AI应用" />
+export const ScenarioAI = () => <ScenarioImage src={ScenarioAIIMG} alt="大模型与AI应用" />
 export const ScenarioHealth = () => <ScenarioImage src={ScenarioHealthIMG} alt="医疗健康" />

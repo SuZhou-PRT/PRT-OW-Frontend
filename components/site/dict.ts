@@ -75,7 +75,7 @@ export const DICT: Record<Lang, DictShape> = {
       items: [
         { title: "自动驾驶", desc: "提供高质量的道路场景数据，目标识别与障碍数据等" },
         { title: "具身智能", desc: "基于具身机器人基础架构开展深度定制化研发，适配多场景，完成部署地" },
-        { title: "互联网与AI应用", desc: "提供图像、语音、文本等多模态数据，支持AI模型训练" },
+        { title: "大模型与AI应用", desc: "提供图像、语音、文本等多模态数据，支持AI模型训练" },
       ],
     },
     partners: { sectionTitle: "合作伙伴" },
@@ -83,7 +83,7 @@ export const DICT: Record<Lang, DictShape> = {
       desc: "珀瑞缇PRT，专注于高质量数据的采集、处理与标注，致力为全球客户提供专业、可靠、安全的AI数据服务，加速智能时代的到来。",
       headings: { services: "数据服务", solutions: "解决方案", about: "关于我们", contact: "联系我们" },
       services: ["数据采集", "数据标注", "数据处理", "数据分析", "数据合成", "数据平台"],
-      solutions: ["自动驾驶", "具身智能", "互联网与AI应用"],
+      solutions: ["自动驾驶", "具身智能", "大模型与AI应用"],
       about: ["公司介绍", "核心优势", "新闻资讯", "联系我们"],
       contact: {
         phoneLabel: "电话:", phone: "+86 21-5888 XXXX",
