@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="2172" height="724" viewBox="0 0 2172 724"
+     role="img" aria-label="PRT logo">
+  <title>PRT logo</title>
+  <defs>
+    <style>
+      .logo-blue {
+        fill: #0B8FF2;
+        shape-rendering: geometricPrecision;
+        text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
+      }
+      .logo-text {
+        font-family: "Arial Black", "Arial", "Helvetica Neue", Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 520px;
+        letter-spacing: 18px;
+        dominant-baseline: alphabetic;
+      }
+    </style>
+  </defs>
+
+  <g class="logo-blue">
+    <path d="
+M 255 628
+L 255 286
+C 255 169 345 77 462 77
+L 622 77
+L 622 258
+L 801 258
+L 801 628
+L 622 628
+L 440 449
+L 440 628
+Z
+M 440 258
+L 622 258
+L 622 443
+L 440 443
+Z
+" fill-rule="evenodd"/>
+    <text class="logo-text" x="895" y="628">PRT</text>
+  </g>
+
+  <g fill="#FFFFFF" shape-rendering="geometricPrecision">
+    <path d="M 622 77 L 801 258 L 622 258 Z"/>
+  </g>
+</svg>
