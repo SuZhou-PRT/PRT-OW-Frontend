@@ -9,6 +9,7 @@ import {
   IconArrowRight, IconChevron, IconUp,
 } from "@/components/icons"
 import { Globe, CoreCube } from "@/components/visuals"
+
 import {
   ScenarioDriving, ScenarioCity, ScenarioManufacture, ScenarioAI, ScenarioHealth,
 } from "@/components/scenarios-visuals"
@@ -18,12 +19,12 @@ import PRTLOGO from "@/public/PRT_logo.svg"
 const NAV = ["首页", "关于我们", "数据服务", "解决方案", "成功案例", "新闻资讯", "加入我们", "联系我们"]
 
 const SERVICES = [
-  { icon: <IconCollect />, title: "数据采集", desc: "全渠道数据采集方案\n覆盖全球多种场景" },
-  { icon: <IconLabel />, title: "数据标注", desc: "高质量数据标注服务\n支持多种数据类型" },
-  { icon: <IconProcess />, title: "数据处理", desc: "数据清洗、脱敏、结构化\n提升数据可用性" },
-  { icon: <IconAnalysis />, title: "数据分析", desc: "数据分析与挖掘\n洞察数据价值" },
-  { icon: <IconSynth />, title: "数据合成", desc: "基于算法的数据合成\n扩充数据多样性" },
-  { icon: <IconPlatform />, title: "数据平台", desc: "智能化数据管理平台\n提升作业效率" },
+  { icon: <IconCollect size={64} />, title: "数据采集", desc: "全渠道数据采集方案\n覆盖全球多种场景" },
+  { icon: <IconLabel size={64} />, title: "数据标注", desc: "高质量数据标注服务\n支持多种数据类型" },
+  { icon: <IconProcess size={64} />, title: "数据处理", desc: "数据清洗、脱敏、结构化\n提升数据可用性" },
+  { icon: <IconAnalysis size={64} />, title: "数据分析", desc: "数据分析与挖掘\n洞察数据价值" },
+  { icon: <IconSynth size={64} />, title: "数据合成", desc: "基于算法的数据合成\n扩充数据多样性" },
+  { icon: <IconPlatform size={64} />, title: "数据平台", desc: "智能化数据管理平台\n提升作业效率" },
 ]
 
 const ADV_LEFT = [
@@ -45,7 +46,11 @@ const SCENARIOS = [
   { bg: <ScenarioHealth />, icon: <IconHealth size={28} />, title: "医疗健康", desc: "提供医疗影像、病历文本等数据，助力AI医疗发展" },
 ]
 
-const PARTNERS = ["Baidu 百度", "商汤 SenseTime", "小鹏 XPENG", "Momenta", "海康威视", "地平线", "字节跳动"]
+const PARTNER_LOGOS: string[] = [
+  ...Array.from({ length: 6 }, (_, i) => `/sanfnag_logos/autonomous_driving/${i}.png`),
+  ...Array.from({ length: 5 }, (_, i) => `/sanfnag_logos/embodied_intelligence/${i}.png`),
+  ...Array.from({ length: 7 }, (_, i) => `/sanfnag_logos/large_models/${i}.png`),
+]
 
 function Header() {
   const [active, setActive] = useState("首页")
@@ -54,6 +59,7 @@ function Header() {
       <div className="container">
         <a className="brand" href="#">
           <Image src={PRTLOGO} alt="PRT" width={120} height={42} priority />
+          <span className="brand-sub">苏州珀瑞缇信息科技有限公司</span>
         </a>
         <nav className="nav">
           {NAV.map((n) => (
@@ -186,11 +192,6 @@ function Scenarios() {
             </div>
           ))}
         </div>
-        <div className="scenarios-pagination">
-          {[0, 1, 2].map((i) => (
-            <span key={i} className={page === i ? "active" : ""} onClick={() => setPage(i)} />
-          ))}
-        </div>
       </div>
     </section>
   )
@@ -204,12 +205,14 @@ function Partners() {
           <h2>合作伙伴</h2>
           <div className="underline" />
         </div>
-        <div className="partners-track">
-          <button className="partner-arrow"><IconChevron dir="left" /></button>
-          <div className="partners-list">
-            {PARTNERS.map((p, i) => <div className="partner" key={i}>{p}</div>)}
+        <div className="partners-marquee">
+          <div className="partners-track-anim">
+            {[...PARTNER_LOGOS, ...PARTNER_LOGOS].map((src, i) => (
+              <div className="partner" key={i}>
+                <img src={src} alt="" loading="lazy" />
+              </div>
+            ))}
           </div>
-          <button className="partner-arrow"><IconChevron /></button>
         </div>
       </div>
     </section>
@@ -223,8 +226,8 @@ function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <a className="brand" href="#">
-              <div className="logo">PRT</div>
-              <div className="name">珀瑞缇<span className="en">PRT</span></div>
+              <Image src={PRTLOGO} alt="PRT" width={120} height={42} />
+              <span className="brand-sub">苏州珀瑞缇信息科技有限公司</span>
             </a>
             <p>珀瑞缇PRT，专注于高质量数据的采集、处理与标注，致力为全球客户提供专业、可靠、安全的AI数据服务，加速智能时代的到来。</p>
             <div className="socials">
