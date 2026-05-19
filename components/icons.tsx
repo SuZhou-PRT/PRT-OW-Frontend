@@ -143,6 +143,16 @@ export const IconChevron = ({ size = 14, dir = "right" }: { size?: number; dir?:
     <path d="M5 3 L9 7 L5 11" />
   </svg>
 )
+export const IconMenu = ({ size = 22 }: IconProps) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 7 H20 M4 12 H20 M4 17 H20" />
+  </svg>
+)
+export const IconClose = ({ size = 22 }: IconProps) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 6 L18 18 M18 6 L6 18" />
+  </svg>
+)
 export const IconUp = ({ size = 16 }: IconProps) => (
   <svg viewBox="0 0 16 16" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 10 L8 6 L12 10" />
